@@ -5,10 +5,14 @@
 
 import scrapy
 
-
 # items.py,文件是专门用于:接收爬虫获取到的数据信息的，就相当于是容器文件。
 # 设置爬虫获取到的信息容器类
 from BookOfSong.spiders.ArticleType import ArticleType
+from BookOfSong.spiders.ArticleTypeGGGZ import ArticleTypeGGGZ
+
+'''
+《诗经》
+'''
 
 
 class BOSItem(scrapy.Item):
@@ -35,6 +39,35 @@ class BOSItem(scrapy.Item):
         article.dynasty = self['bos_dynasty']
         article.pinyin = self['bos_pinyin']
         article.content = self['bos_content']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+
+'''
+《古文观止》
+'''
+
+
+class GGGZItem(scrapy.Item):
+    # 篇目名称
+    album_index = scrapy.Field()
+    album_name = scrapy.Field()
+    title = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 内容
+    content = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeGGGZ()
+        # 字段名称=值
+        article.album_index = self['album_index']
+        article.album_name = self['album_name']
+        article.title = self['title']
+        article.author = self['author']
+        article.content = self['content']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()
         return

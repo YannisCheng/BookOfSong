@@ -7,7 +7,7 @@ import scrapy
 
 # items.py,文件是专门用于:接收爬虫获取到的数据信息的，就相当于是容器文件。
 # 设置爬虫获取到的信息容器类
-from BookOfSong.spiders.es_mapping.ArticleType import ArticleType
+from BookOfSong.spiders.es_mapping.ArticleTypeShiJing import ArticleType
 from BookOfSong.spiders.es_mapping.ArticleTypeGGGZ import ArticleTypeGGGZ
 from BookOfSong.spiders.es_mapping.ArticleTypeLaoZi import ArticleTypeLaoZi
 from BookOfSong.spiders.es_mapping.ArticleTypeLunYu import ArticleTypeLunYu
@@ -18,7 +18,7 @@ from BookOfSong.spiders.es_mapping.ArticleTypeSGZ import ArticleTypeSGZ
 '''
 
 
-class BOSItem(scrapy.Item):
+class ShiJingItem(scrapy.Item):
     # 篇目名称
     bos_name = scrapy.Field()
     # 作者

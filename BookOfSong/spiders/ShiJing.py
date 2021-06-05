@@ -1,12 +1,12 @@
 import logging
 
 from scrapy import Spider, Selector, Request
-from BookOfSong.items import BOSItem
+from BookOfSong.items import ShiJingItem
 
 '''
 《诗经》
 '''
-class CTCSpider(Spider):
+class ShiJing(Spider):
     name = "bos_lock"
     allowed_domains = ["https://www.liuxue86.com/", "https://www.hao86.com/"]
     start_urls = ["https://www.liuxue86.com/a/3085448.html"]
@@ -51,7 +51,7 @@ class CTCSpider(Spider):
     '''
 
     def parse_third(self, response):
-        bosItem = BOSItem()
+        bosItem = ShiJingItem()
         node = Selector(response)
         logging.debug(response.url)
 

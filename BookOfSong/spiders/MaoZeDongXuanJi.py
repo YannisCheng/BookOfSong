@@ -6,7 +6,7 @@ from BookOfSong.items import MaoXuanItems
 
 
 class MaoZeDongXuanJi(Spider):
-    name = "mxj"
+    name = "mxj_lock"
     allowed_domains = ["http://ex.cssn.cn/"]
     start_urls = ["http://ex.cssn.cn/sjxz/xsjdk/mkszyjd/mzdsx/840200/"]
     #  {'./84020000/': '毛泽东选集第1卷', './84020001/': '毛泽东选集第2卷', './84020002/': '毛泽东选集第3卷', './84020003/': '毛泽东选集第4卷'}

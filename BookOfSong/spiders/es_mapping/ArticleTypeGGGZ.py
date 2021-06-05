@@ -25,7 +25,7 @@ class ArticleTypeGGGZ(Document):
     # 创建索引（数据库）
     class Index:
         # 对应es的index(相当于数据库名称)
-        name = "gu_wen_guan_zhi"
+        name = "book_gu_wen_guan_zhi"
 
 
 # 判断在本代码文件执行才执行里面的方法，其他页面调用的则不执行里面的方法

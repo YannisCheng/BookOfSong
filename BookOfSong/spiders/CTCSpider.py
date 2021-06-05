@@ -3,7 +3,9 @@ import logging
 from scrapy import Spider, Selector, Request
 from BookOfSong.items import BOSItem
 
-
+'''
+《诗经》
+'''
 class CTCSpider(Spider):
     name = "CTC_BOS"
     allowed_domains = ["https://www.liuxue86.com/", "https://www.hao86.com/"]

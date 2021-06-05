@@ -4,7 +4,9 @@ from scrapy import Spider, Selector, Request
 
 from BookOfSong.items import GGGZItem
 
-
+'''
+《古文观止》
+'''
 class GuWenGuanZhi(Spider):
     name = "GGGZ"
     allowed_domains = ["https://www.zggdwx.com/"]

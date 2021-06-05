@@ -9,7 +9,7 @@ from BookOfSong.items import LaoZiItems
 
 
 class LaoZi(Spider):
-    name = 'lz'
+    name = 'lz_lock'
     allowed_domains = ['http://www.guoxue123.com/']
     start_urls = ['http://www.guoxue123.com/zhibu/0101/03lzbs/004.htm']
 

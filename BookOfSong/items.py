@@ -10,6 +10,7 @@ import scrapy
 from BookOfSong.spiders.es_mapping.ArticleType import ArticleType
 from BookOfSong.spiders.es_mapping.ArticleTypeGGGZ import ArticleTypeGGGZ
 from BookOfSong.spiders.es_mapping.ArticleTypeLaoZi import ArticleTypeLaoZi
+from BookOfSong.spiders.es_mapping.ArticleTypeLunYu import ArticleTypeLunYu
 from BookOfSong.spiders.es_mapping.ArticleTypeSGZ import ArticleTypeSGZ
 
 '''
@@ -102,6 +103,7 @@ class SGZItems(scrapy.Item):
         article.save()
         return
 
+
 '''
 老子-帛书
 '''
@@ -118,6 +120,31 @@ class LaoZiItems(scrapy.Item):
         article = ArticleTypeLaoZi()
         # 字段名称=值
         article.book_item = self['book_item']
+        article.content = self['content']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+
+'''
+《论语》
+'''
+
+
+class LunYuItems(scrapy.Item):
+    # 篇目名称
+    album_name = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 内容
+    content = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeLunYu()
+        # 字段名称=值
+        article.album_name = self['album_name']
+        article.author = self['author']
         article.content = self['content']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()

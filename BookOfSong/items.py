@@ -7,11 +7,13 @@ import scrapy
 
 # items.py,文件是专门用于:接收爬虫获取到的数据信息的，就相当于是容器文件。
 # 设置爬虫获取到的信息容器类
+from BookOfSong.spiders.es_mapping.ArticleTypeMaoXuan import ArticleTypeMaoXuan
 from BookOfSong.spiders.es_mapping.ArticleTypeShiJing import ArticleType
 from BookOfSong.spiders.es_mapping.ArticleTypeGGGZ import ArticleTypeGGGZ
 from BookOfSong.spiders.es_mapping.ArticleTypeLaoZi import ArticleTypeLaoZi
 from BookOfSong.spiders.es_mapping.ArticleTypeLunYu import ArticleTypeLunYu
 from BookOfSong.spiders.es_mapping.ArticleTypeSGZ import ArticleTypeSGZ
+from BookOfSong.spiders.es_mapping.ArticleTypeTangShi import ArticleTypeTangShi
 from BookOfSong.spiders.es_mapping.ArticleTypeZhouYi import ArticleTypeZhouYi
 
 '''
@@ -169,6 +171,68 @@ class ZhouYiItems(scrapy.Item):
         article = ArticleTypeZhouYi()
         # 字段名称=值
         article.book_item = self['book_item']
+        article.content = self['content']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+
+'''
+《唐诗三百首》
+'''
+
+
+class TangShiSanBaiItems(scrapy.Item):
+
+    # 辑
+    album_item = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 朝代
+    density = scrapy.Field()
+    # 名称
+    title = scrapy.Field()
+    # 诗体
+    body = scrapy.Field()
+    # 押韵字
+    yun = scrapy.Field()
+    # 内容
+    content = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeTangShi()
+        # 字段名称=值
+        article.album_item = self['album_item']
+        article.author = self['author']
+        article.density = self['density']
+        article.title = self['title']
+        article.body = self['body']
+        article.yun = self['yun']
+        article.content = self['content']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+'''
+《毛泽东选集》
+'''
+
+
+class MaoXuanItems(scrapy.Item):
+
+    album = scrapy.Field()
+    title = scrapy.Field()
+    author = scrapy.Field()
+    content = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeMaoXuan()
+        # 字段名称=值
+        article.album = self['album']
+        article.title = self['title']
+        article.author = self['author']
         article.content = self['content']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()

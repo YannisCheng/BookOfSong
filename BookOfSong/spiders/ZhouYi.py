@@ -6,7 +6,7 @@ from BookOfSong.items import ZhouYiItems
 
 
 class ZhouYi(Spider):
-    name = "zy"
+    name = "zy_lock"
     allowed_domains = ["http://www.ningyangtv.cn/"]
     start_urls = ["http://www.ningyangtv.cn/bookindex/13.html"]
 

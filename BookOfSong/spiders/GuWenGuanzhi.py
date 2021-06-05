@@ -8,7 +8,7 @@ from BookOfSong.items import GGGZItem
 《古文观止》
 '''
 class GuWenGuanZhi(Spider):
-    name = "GGGZ"
+    name = "gggzb"
     allowed_domains = ["https://www.zggdwx.com/"]
     start_urls = ["https://www.zggdwx.com/guwen.html"]
 

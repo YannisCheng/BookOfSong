@@ -10,7 +10,7 @@ from BookOfSong.items import LaoZiItems, LunYuItems
 
 
 class LunYu(Spider):
-    name = 'ly'
+    name = 'ly_lock'
     allowed_domains = ['https://so.gushiwen.org/']
     start_urls = ['https://so.gushiwen.org/guwen/book_2.aspx']
 

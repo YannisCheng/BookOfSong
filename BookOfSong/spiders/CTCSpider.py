@@ -7,7 +7,7 @@ from BookOfSong.items import BOSItem
 《诗经》
 '''
 class CTCSpider(Spider):
-    name = "CTC_BOS"
+    name = "bos_lock"
     allowed_domains = ["https://www.liuxue86.com/", "https://www.hao86.com/"]
     start_urls = ["https://www.liuxue86.com/a/3085448.html"]
 

@@ -9,6 +9,7 @@ import scrapy
 # 设置爬虫获取到的信息容器类
 from BookOfSong.spiders.es_mapping.ArticleType import ArticleType
 from BookOfSong.spiders.es_mapping.ArticleTypeGGGZ import ArticleTypeGGGZ
+from BookOfSong.spiders.es_mapping.ArticleTypeLaoZi import ArticleTypeLaoZi
 from BookOfSong.spiders.es_mapping.ArticleTypeSGZ import ArticleTypeSGZ
 
 '''
@@ -96,6 +97,27 @@ class SGZItems(scrapy.Item):
         article.book_item_name = self['book_item_name']
         article.book_item_name_title = self['book_item_name_title']
         article.author = self['author']
+        article.content = self['content']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+'''
+老子-帛书
+'''
+
+
+class LaoZiItems(scrapy.Item):
+    # 辑
+    book_item = scrapy.Field()
+    # 内容
+    content = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeLaoZi()
+        # 字段名称=值
+        article.book_item = self['book_item']
         article.content = self['content']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()

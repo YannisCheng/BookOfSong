@@ -10,7 +10,7 @@ from BookOfSong.items import SGZItems
 
 
 class SanGuoZhi(Spider):
-    name = "sgz"
+    name = "sgz_lock"
     allowed_domains = ["https://www.gushiwen.com/"]
     start_urls = ["https://www.gushiwen.com/dianji/54.html"]
     title_dict = dict()

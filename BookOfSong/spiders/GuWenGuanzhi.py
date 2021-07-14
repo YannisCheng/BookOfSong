@@ -4,9 +4,8 @@ from scrapy import Spider, Selector, Request
 
 from BookOfSong.items import GGGZItem
 
-'''
-《古文观止》
-'''
+
+# 《古文观止》
 class GuWenGuanZhi(Spider):
     name = "gggz_lock"
     allowed_domains = ["https://www.zggdwx.com/"]
@@ -16,6 +15,7 @@ class GuWenGuanZhi(Spider):
     ji_name = list()
 
     def parse(self, response, **kwargs):
+
         node_top = Selector(response)
         node_list = node_top.xpath(
             '//div[@class="directory"]/div[@class="mdui-list"]/div[@class="mdui-subheader"]/text()').extract()

@@ -1,14 +1,9 @@
-import logging
-
 from scrapy import Spider, Selector, Request
 
 from BookOfSong.items import SGZItems
 
-'''
-《三国志》
-'''
 
-
+# 《三国志》
 class SanGuoZhi(Spider):
     name = "sgz_lock"
     allowed_domains = ["https://www.gushiwen.com/"]

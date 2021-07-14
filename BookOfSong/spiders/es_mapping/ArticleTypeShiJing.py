@@ -1,4 +1,4 @@
-from elasticsearch_dsl import Document, Text, analyzer
+from elasticsearch_dsl import Document, Text
 from elasticsearch_dsl.connections import connections
 
 # Gitlab：https://github.com/elastic/elasticsearch-dsl-py

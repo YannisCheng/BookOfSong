@@ -8,19 +8,18 @@ import scrapy
 # items.py,文件是专门用于:接收爬虫获取到的数据信息的，就相当于是容器文件。
 # 设置爬虫获取到的信息容器类
 from BookOfSong.spiders.es_mapping.ArticleTypeMaoXuan import ArticleTypeMaoXuan
+from BookOfSong.spiders.es_mapping.ArticleTypeSJ import ArticleTypeShiJi
 from BookOfSong.spiders.es_mapping.ArticleTypeShiJing import ArticleType
 from BookOfSong.spiders.es_mapping.ArticleTypeGGGZ import ArticleTypeGGGZ
 from BookOfSong.spiders.es_mapping.ArticleTypeLaoZi import ArticleTypeLaoZi
 from BookOfSong.spiders.es_mapping.ArticleTypeLunYu import ArticleTypeLunYu
 from BookOfSong.spiders.es_mapping.ArticleTypeSGZ import ArticleTypeSGZ
 from BookOfSong.spiders.es_mapping.ArticleTypeTangShi import ArticleTypeTangShi
+from BookOfSong.spiders.es_mapping.ArticleTypeZZTG import ArticleTypeZZTG
 from BookOfSong.spiders.es_mapping.ArticleTypeZhouYi import ArticleTypeZhouYi
+from BookOfSong.spiders.es_mapping.ArticleTypeZhuangZi import ArticleTypeZhuangZi
 
-'''
-《诗经》
-'''
-
-
+# 《诗经》
 class ShiJingItem(scrapy.Item):
     # 篇目名称
     bos_name = scrapy.Field()
@@ -50,11 +49,7 @@ class ShiJingItem(scrapy.Item):
         return
 
 
-'''
-《古文观止》
-'''
-
-
+# 《古文观止》
 class GGGZItem(scrapy.Item):
     # 篇目名称
     album_index = scrapy.Field()
@@ -79,11 +74,7 @@ class GGGZItem(scrapy.Item):
         return
 
 
-'''
-三国志
-'''
-
-
+# 《三国志》
 class SGZItems(scrapy.Item):
     # 辑
     book_item_name = scrapy.Field()
@@ -107,11 +98,7 @@ class SGZItems(scrapy.Item):
         return
 
 
-'''
-老子-帛书
-'''
-
-
+# 《老子-帛书》
 class LaoZiItems(scrapy.Item):
     # 辑
     book_item = scrapy.Field()
@@ -129,11 +116,7 @@ class LaoZiItems(scrapy.Item):
         return
 
 
-'''
-《论语》
-'''
-
-
+#《论语》
 class LunYuItems(scrapy.Item):
     # 篇目名称
     album_name = scrapy.Field()
@@ -154,12 +137,7 @@ class LunYuItems(scrapy.Item):
         return
 
 
-
-'''
-《周易》
-'''
-
-
+# 《周易》
 class ZhouYiItems(scrapy.Item):
     # 辑
     book_item = scrapy.Field()
@@ -177,13 +155,8 @@ class ZhouYiItems(scrapy.Item):
         return
 
 
-'''
-《唐诗三百首》
-'''
-
-
+# 《唐诗三百首》
 class TangShiSanBaiItems(scrapy.Item):
-
     # 辑
     album_item = scrapy.Field()
     # 作者
@@ -214,13 +187,9 @@ class TangShiSanBaiItems(scrapy.Item):
         article.save()
         return
 
-'''
-《毛泽东选集》
-'''
 
-
+# 《毛泽东选集》
 class MaoXuanItems(scrapy.Item):
-
     album = scrapy.Field()
     title = scrapy.Field()
     author = scrapy.Field()
@@ -234,6 +203,86 @@ class MaoXuanItems(scrapy.Item):
         article.title = self['title']
         article.author = self['author']
         article.content = self['content']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+
+# 《资治通鉴》
+class ZZTGItem(scrapy.Item):
+    # 辑名称
+    album_name = scrapy.Field()
+    # 篇目名称
+    title = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 内容
+    content = scrapy.Field()
+    # 字数
+    char_num = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeZZTG()
+        # 字段名称=值
+        article.album_name = self['album_name']
+        article.title = self['title']
+        article.author = self['author']
+        article.content = self['content']
+        article.char_num = self['char_num']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+# 《史记》
+class ShiJiItem(scrapy.Item):
+    # 辑名称
+    album_name = scrapy.Field()
+    # 篇目名称
+    title = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 内容
+    content = scrapy.Field()
+    # 字数
+    char_num = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeShiJi()
+        # 字段名称=值
+        article.album_name = self['album_name']
+        article.title = self['title']
+        article.author = self['author']
+        article.content = self['content']
+        article.char_num = self['char_num']
+        # 将数据写入elasticsearch(搜索引擎对象)
+        article.save()
+        return
+
+
+# 《庄子》
+class ZhuangZiItem(scrapy.Item):
+    # 辑名称
+    album_name = scrapy.Field()
+    # 篇目名称
+    title = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 内容
+    content = scrapy.Field()
+    # 字数
+    char_num = scrapy.Field()
+
+    def save_to_es(self):
+        # 实例化elasticsearch(搜索引擎对象)
+        article = ArticleTypeZhuangZi()
+        # 字段名称=值
+        article.album_name = self['album_name']
+        article.title = self['title']
+        article.author = self['author']
+        article.content = self['content']
+        article.char_num = self['char_num']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()
         return

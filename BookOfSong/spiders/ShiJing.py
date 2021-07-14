@@ -1,11 +1,11 @@
 import logging
 
 from scrapy import Spider, Selector, Request
+
 from BookOfSong.items import ShiJingItem
 
-'''
-《诗经》
-'''
+
+# 《诗经》
 class ShiJing(Spider):
     name = "bos_lock"
     allowed_domains = ["https://www.liuxue86.com/", "https://www.hao86.com/"]
@@ -27,7 +27,7 @@ class ShiJing(Spider):
             yield Request(url=item.extract(), callback=self.parse_second,
                           dont_filter=True)
         # 此处设置的地址是各个辑的地址，该地址中包含着该辑下所有的篇目,替换此处的url时，需要更改parse_third#bosItem['bos_album'] = "小雅·荡之什"的值
-        #yield Request(url="https://www.liuxue86.com/a/3085398.html", callback=self.parse_second,dont_filter=True)
+        # yield Request(url="https://www.liuxue86.com/a/3085398.html", callback=self.parse_second,dont_filter=True)
 
     '''
     遍历单个诗集中的篇目
@@ -96,6 +96,6 @@ class ShiJing(Spider):
             content_str = content_str + content_item[25:length] + "\n"
         bosItem['bos_content'] = content_str
 
-        #print(bosItem)
+        # print(bosItem)
 
         bosItem.save_to_res()

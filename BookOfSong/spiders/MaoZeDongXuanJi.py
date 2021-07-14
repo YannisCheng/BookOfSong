@@ -1,10 +1,9 @@
-import logging
-
 from scrapy import Spider, Selector, Request
 
 from BookOfSong.items import MaoXuanItems
 
 
+# 《毛泽东选集1-3》
 class MaoZeDongXuanJi(Spider):
     name = "mxj_lock"
     allowed_domains = ["http://ex.cssn.cn/"]

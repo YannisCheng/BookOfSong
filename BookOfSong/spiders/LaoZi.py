@@ -1,13 +1,9 @@
-
 from scrapy import Spider, Selector
 
 from BookOfSong.items import LaoZiItems
 
-'''
-老子帛书
-'''
 
-
+# 《老子-帛书》
 class LaoZi(Spider):
     name = 'lz_lock'
     allowed_domains = ['http://www.guoxue123.com/']
@@ -25,7 +21,3 @@ class LaoZi(Spider):
             content_list.append(item)
             # print(item)
             item.save_to_es()
-
-
-
-

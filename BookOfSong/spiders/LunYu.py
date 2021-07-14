@@ -2,13 +2,10 @@ import logging
 
 from scrapy import Spider, Selector, Request
 
-from BookOfSong.items import LaoZiItems, LunYuItems
-
-'''
-《论语》
-'''
+from BookOfSong.items import LunYuItems
 
 
+# 《论语》
 class LunYu(Spider):
     name = 'ly_lock'
     allowed_domains = ['https://so.gushiwen.org/']
@@ -29,8 +26,8 @@ class LunYu(Spider):
         item = LunYuItems()
         node = Selector(response)
         str_xpath = '//div[@class="main3"]/div[@class="left"]/div[@class="sons"]/div[@id="cont' + num + '"]'
-        title=node.xpath(str_xpath + '/h1/span/b/text()').extract()[0]
-        right = len(title)-3
+        title = node.xpath(str_xpath + '/h1/span/b/text()').extract()[0]
+        right = len(title) - 3
         item['album_name'] = title[0:right]
         item['author'] = '孔子'
 

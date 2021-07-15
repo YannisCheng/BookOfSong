@@ -26,7 +26,7 @@ class ArticleTypeZhuangZi(Document):
     # 创建索引（数据库）
     class Index:
         # 对应es的index(相当于数据库名称)
-        name = "book_zi_zhi_tong_jian"
+        name = "book_zhuang_zi"
 
 
 # 判断在本代码文件执行才执行里面的方法，其他页面调用的则不执行里面的方法

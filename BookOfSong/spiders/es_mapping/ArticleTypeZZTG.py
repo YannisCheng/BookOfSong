@@ -1,4 +1,4 @@
-from elasticsearch_dsl import Document, Text
+from elasticsearch_dsl import Document, Text, Integer
 from elasticsearch_dsl.connections import connections
 
 # 导入连接elasticsearch(搜索引擎)服务器方法
@@ -11,7 +11,7 @@ connections.create_connection(hosts=['had-nn:9200'])
 
 
 class ArticleTypeZZTG(Document):
-    # Text类型需要分词，所以需要知道中文分词器，ik_max_wordwei为中文分词器
+    # Text类型需要分词，所以需要知道中文分词器，ik_max_word为中文分词器
     # ES数据库中表的各个字段声明
     # 辑
     album_name = Text(analyzer="ik_max_word")
@@ -20,7 +20,7 @@ class ArticleTypeZZTG(Document):
     # 作者
     author = Text()
     # 字数
-    char_num = Text()
+    char_num = Integer()
     # 内容
     content = Text(analyzer="ik_max_word")
 

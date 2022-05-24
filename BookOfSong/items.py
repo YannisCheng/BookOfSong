@@ -42,8 +42,8 @@ class ShiJingItem(scrapy.Item):
         article.name = self['bos_name']
         article.author = self['bos_author']
         article.dynasty = self['bos_dynasty']
-        article.pinyin = self['bos_pinyin']
         article.content = self['bos_content']
+        article.pinyin = self['bos_pinyin']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()
         return
@@ -228,8 +228,8 @@ class ZZTGItem(scrapy.Item):
         article.album_name = self['album_name']
         article.title = self['title']
         article.author = self['author']
-        article.content = self['content']
         article.char_num = self['char_num']
+        article.content = self['content']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()
         return
@@ -254,8 +254,8 @@ class ShiJiItem(scrapy.Item):
         article.album_name = self['album_name']
         article.title = self['title']
         article.author = self['author']
-        article.content = self['content']
         article.char_num = self['char_num']
+        article.content = self['content']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()
         return
@@ -281,8 +281,8 @@ class ZhuangZiItem(scrapy.Item):
         article.album_name = self['album_name']
         article.title = self['title']
         article.author = self['author']
-        article.content = self['content']
         article.char_num = self['char_num']
+        article.content = self['content']
         # 将数据写入elasticsearch(搜索引擎对象)
         article.save()
         return
